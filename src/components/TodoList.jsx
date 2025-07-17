@@ -1,17 +1,22 @@
 import TodoItem from "./TodoItem";
 
 function TodoList(props) {
-  const { todos } = props;
+  const { todos, setTodos } = props;
   return (
     <ul className="list-group">
-      <div
-
-      >
-        {todos.map((task) => {
-          const { label, id, isCompleted } = task;
-          return <TodoItem key={id} label={label} isCompleted={isCompleted} />;
-        })}
-      </div>
+      {todos.map((task) => {
+        const { label, id, isCompleted } = task;
+        return (
+          <TodoItem
+            key={id}
+            id={id}
+            label={label}
+            isCompleted={isCompleted}
+            todos={todos}
+            setTodos={setTodos}
+          />
+        );
+      })}
     </ul>
   );
 }
